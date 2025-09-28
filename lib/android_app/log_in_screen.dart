@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:learn_with_noman/android_app/sign_up_screen.dart';
+import 'package:learn_with_noman/conts.dart';
+import 'package:learn_with_noman/widgets/custom_button.dart';
+import 'package:learn_with_noman/widgets/custom_text_field.dart';
 
 class LogInScreen extends StatefulWidget {
   const LogInScreen({super.key});
@@ -28,108 +30,41 @@ class _LogInScreenState extends State<LogInScreen> {
                 const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      "Log in",
-                      style: TextStyle(
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black),
-                    ),
-                    Text(
-                      "Welcome back! Please enter your details.",
-                      style: TextStyle(fontSize: 15, color: Colors.grey),
-                    ),
-                    SizedBox(height: 10),
-                    // Email
-                    Text(
-                      "Email",
-                      style: TextStyle(fontSize: 18, color: Colors.grey),
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: "Enter your email"),
-                    ),
-                    SizedBox(height: 15),
-                    //    Password
-                    Text(
-                      "Password",
-                      style: TextStyle(fontSize: 18, color: Colors.grey),
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: "Enter your Password"),
-                      obscureText: true,
+                    CustomTextField(
+                        FieldText1: "Email", FieldText2: "Enter your email"),
+                    CustomTextField(
+                      FieldText1: "Password",
+                      FieldText2: "Enter your Password",
                     ),
                   ],
                 ),
                 const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Text("Remember for 30 days"),
-                    TextButton(
-                        onPressed: () {}, child: const Text("Forget password")),
-                  ],
-                ),
-                const SizedBox(height: 20),
-                // Sign in button
-                Container(
-                  width: double.infinity,
-                  height: 50,
-                  decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "LOG IN",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      SizedBox(width: 5),
-                      Icon(
-                        Icons.person_3_outlined,
-                        color: Colors.white,
-                      ),
-                    ],
-                  ),
-                ),
+
+                Custombuttom(btmText: "Sign in", onTab: () {}),
+
                 const SizedBox(height: 15),
                 // Google Auth
-                Container(
-                  width: double.infinity,
-                  height: 50,
-                  decoration: BoxDecoration(
-                      border: Border.all(),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SvgPicture.asset(
-                          "assets/images/icons/svg/google-icon.svg",
-                          height: 20,
-                          width: 20),
-                      const SizedBox(width: 10),
-                      const Text(
-                        "Sign in with Google",
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
+                const GoogleAuthButtom(
+                    btmText: "Sign in with Google",
+                    imagePath: "assets/images/icons/svg/google-icon.svg"),
+
                 const SizedBox(height: 30),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Don’t have an account? "),
+                    const Text(
+                      "Don’t have an account? ",
+                      style:
+                          TextStyle(color: Color.fromARGB(255, 143, 117, 117)),
+                    ),
                     TextButton(
                         onPressed: () {
-                          Get.to(() => SignUpScreen());
+                          Get.to(() => const SignUpScreen());
                         },
-                        child: const Text("Sign up"))
+                        child: const Text(
+                          "Sign up",
+                          style: TextStyle(color: OnBoarding.buttomBG),
+                        ))
                   ],
                 ),
               ],

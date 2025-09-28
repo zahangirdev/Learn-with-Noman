@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:learn_with_noman/android_app/log_in_screen.dart';
+import 'package:learn_with_noman/widgets/custom_button.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -56,7 +57,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     Get.to(() => const LogInScreen());
                   },
                   child: const Text(
-                    "SKIB",
+                    "SKIP",
                     style: TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -127,30 +128,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             ),
             const SizedBox(height: 20),
-            InkWell(
-              onTap: () {
-                Get.to(() => const LogInScreen());
-              },
-              child: Container(
-                width: double.infinity,
-                height: 50,
-                decoration: BoxDecoration(
-                    color: Colors.red, borderRadius: BorderRadius.circular(10)),
-                child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "LOG IN/SIGN UP",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    Icon(
-                      Icons.person_3_outlined,
-                      color: Colors.white,
-                    ),
-                  ],
-                ),
-              ),
-            )
+            // Custom Buttom
+            Custombuttom(
+                btmText: "Log In/SIGN UP",
+                onTab: () {
+                  Get.to(() => const LogInScreen());
+                })
           ],
         ),
       ),

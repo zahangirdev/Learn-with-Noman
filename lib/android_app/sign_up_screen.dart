@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:learn_with_noman/widgets/custom_button.dart';
+import 'package:learn_with_noman/widgets/custom_text_field.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -23,13 +24,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   "assets/images/onboarding/pixelcut-export2.png",
                   height: 70,
                 ),
+                SizedBox(
+                  height: 25,
+                ),
                 const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       "Sign Up",
                       style: TextStyle(
-                          fontSize: 40,
+                          fontSize: 30,
                           fontWeight: FontWeight.bold,
                           color: Colors.black),
                     ),
@@ -38,108 +42,43 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       style: TextStyle(fontSize: 15, color: Colors.grey),
                     ),
                     SizedBox(height: 10),
+                    // TextFor
                     // Name
-                    Text(
-                      "Name*",
-                      style: TextStyle(fontSize: 18, color: Colors.grey),
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: "Enter your name"),
-                    ),
-                    SizedBox(height: 10),
-                    // Email
-                    Text(
-                      "Email*",
-                      style: TextStyle(fontSize: 18, color: Colors.grey),
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: "Enter your email"),
-                    ),
-                    SizedBox(height: 10),
-                    // Phone Number
-                    Text(
-                      "Email",
-                      style: TextStyle(fontSize: 18, color: Colors.grey),
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: "Enter your email"),
-                    ),
-                    SizedBox(height: 15),
-                    // Password
-                    Text(
-                      "Password",
-                      style: TextStyle(fontSize: 18, color: Colors.grey),
-                    ),
-                    TextField(
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: "Enter your Password"),
-                      obscureText: true,
-                    ),
+                    CustomTextField(
+                        FieldText1: "Name*", FieldText2: "Enter your name"),
+                    CustomTextField(
+                        FieldText1: "Email*", FieldText2: "Enter your email"),
+                    CustomTextField(
+                        FieldText1: "Password",
+                        FieldText2: "Enter your Ppassword"),
                   ],
                 ),
                 const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text("Remember for 30 days"),
+                    const Text(
+                      "Remember for 30 days",
+                      style: TextStyle(),
+                    ),
                     TextButton(
-                        onPressed: () {}, child: const Text("Forget password")),
+                        onPressed: () {},
+                        child: const Text(
+                          "Forget password",
+                          style: TextStyle(),
+                        )),
                   ],
                 ),
                 const SizedBox(height: 20),
                 // Get started button
-                Container(
-                  width: double.infinity,
-                  height: 50,
-                  decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(10)),
-                  child: const Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(
-                        "Get started",
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      SizedBox(width: 5),
-                      Icon(
-                        Icons.person_3_outlined,
-                        color: Colors.white,
-                      ),
-                    ],
-                  ),
-                ),
+                Custombuttom(btmText: "Get started", onTab: () {}),
+
                 const SizedBox(height: 15),
                 // Google Auth
-                Container(
-                  width: double.infinity,
-                  height: 50,
-                  decoration: BoxDecoration(
-                      border: Border.all(),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SvgPicture.asset(
-                          "assets/images/icons/svg/google-icon.svg",
-                          height: 20,
-                          width: 20),
-                      const SizedBox(width: 10),
-                      const Text(
-                        "Sign up with Google",
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
+
+                const GoogleAuthButtom(
+                    btmText: "Sign up with Google",
+                    imagePath: "assets/images/icons/svg/google-icon.svg"),
               ],
             ),
           ),

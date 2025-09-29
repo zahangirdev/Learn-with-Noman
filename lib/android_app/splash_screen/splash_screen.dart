@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:learn_with_noman/android_app/onboarding_screen.dart';
+import 'package:learn_with_noman/android_app/onboarding_screen/onboarding_screen.dart';
 import 'dart:async';
 
 class SplashScreen extends StatefulWidget {

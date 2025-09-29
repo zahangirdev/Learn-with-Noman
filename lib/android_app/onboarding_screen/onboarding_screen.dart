@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:learn_with_noman/android_app/log_in_screen.dart';
-import 'package:learn_with_noman/widgets/custom_button.dart';
+import 'package:learn_with_noman/android_app/auth.dart/log_in_screen.dart';
+import 'package:learn_with_noman/widgets/custom_onboard_button.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -39,45 +38,51 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
+      body: Padding(
+        padding: const EdgeInsets.only(top: 20, left: 10, right: 10),
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.asset(
-              "assets/images/onboarding/pixelcut-export2.png",
-              fit: BoxFit.contain,
-              width: 100,
-              height: 50,
-            ),
-            const SizedBox(width: 8),
+            // Top Logo & Skip Button
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                TextButton(
-                  onPressed: () {
-                    Get.to(() => const LogInScreen());
-                  },
-                  child: const Text(
-                    "SKIP",
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold),
-                  ),
+                Image.asset(
+                  "assets/images/onboarding/pixelcut-export2.png",
+                  fit: BoxFit.contain,
+                  width: 130,
+                  height: 40,
                 ),
-                IconButton(
-                    onPressed: () {
-                      Get.to(() => const LogInScreen());
-                    },
-                    icon: const Icon(Icons.arrow_forward_ios)),
+                Row(
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        Get.to(() => const LogInScreen());
+                      },
+                      child: const Text(
+                        "SKIP",
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        Get.to(() => const LogInScreen());
+                      },
+                      icon: const Icon(
+                        Icons.arrow_forward_ios,
+                        size: 15,
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
-          ],
-        ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          children: [
+
+            // PageView
             Expanded(
               child: PageView.builder(
                 controller: _pageController,
@@ -91,16 +96,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   final page = _pages[index];
                   return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      // Indicator Dots
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: List.generate(_pages.length, (index) {
+                        children: List.generate(_pages.length, (dotIndex) {
                           return Container(
                             margin: const EdgeInsets.all(4),
-                            width: _currentPage == index ? 16 : 8,
+                            width: _currentPage == dotIndex ? 16 : 8,
                             height: 8,
                             decoration: BoxDecoration(
-                              color: _currentPage == index
+                              color: _currentPage == dotIndex
                                   ? Colors.red
                                   : Colors.grey,
                               borderRadius: BorderRadius.circular(4),
@@ -108,32 +115,39 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           );
                         }),
                       ),
-                      //  Image.network(page["image"]!, height: 200),
                       const SizedBox(height: 20),
                       Text(
                         page["title"]!,
                         style: const TextStyle(
-                            fontSize: 24, fontWeight: FontWeight.bold),
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                       const SizedBox(height: 10),
                       Text(
                         page["subtitle"]!,
                         textAlign: TextAlign.center,
                         style: const TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.grey),
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey,
+                        ),
                       ),
                     ],
                   );
                 },
               ),
             ),
+
             const SizedBox(height: 20),
-            // Custom Buttom
-            Custombuttom(
-                btmText: "Log In/SIGN UP",
+
+            // Custom Button (using SVG asset path or change widget)
+            CustomOnboardButton(
+                btmText: "LOG IN/SIGN UP",
                 onTab: () {
                   Get.to(() => const LogInScreen());
-                })
+                }),
+
+            const SizedBox(height: 30),
           ],
         ),
       ),

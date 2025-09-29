@@ -22,9 +22,16 @@ class CustomTextField extends StatelessWidget {
         const SizedBox(
           height: 3,
         ),
+
+        //
+
         TextField(
           decoration: InputDecoration(
-              border: const OutlineInputBorder(), hintText: FieldText2),
+
+              // focusColor: AppColors.textField,
+              // fillColor: AppColors.textField,
+              border: const OutlineInputBorder(),
+              hintText: FieldText2),
           style: const TextStyle(),
         ),
         SizedBox(height: 15),
@@ -32,76 +39,3 @@ class CustomTextField extends StatelessWidget {
     );
   }
 }
-
-/*
-TextField(
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(),
-                          hintText: "Enter your email"),
-                      style: TextStyle(
-                        
-                      ),
-                    );
-
-                    /// 
-import 'package:flutter/material.dart';
-import 'package:learn_with_noman/conts.dart';
-
-class Custombuttom extends StatelessWidget {
-  final String btmText;
-  final VoidCallback onTab;
-
-  const Custombuttom({
-    super.key,
-    required this.btmText,
-    required this.onTab,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: onTab,
-      child: Container(
-        width: double.infinity,
-        height: 50,
-        decoration: BoxDecoration(
-            color: OnBoarding.buttomBG,
-            //     color: Colors.red,
-            borderRadius: BorderRadius.circular(10)),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              btmText,
-              style: const TextStyle(color: Colors.white),
-            ),
-            const Icon(
-              Icons.person_3_outlined,
-              color: Colors.white,
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-/*
-InkWell(
-      onTap: onTab,
-      child: Container(
-        height: 50,
-        width: 120,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(15),
-          color: Colors.red,
-        ),
-        child: Text(
-          btmText,
-          style: const TextStyle(color: Colors.white, fontSize: 18),
-        ),
-      ),
-    )
-*/
-*/

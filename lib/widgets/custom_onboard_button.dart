@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:learn_with_noman/android_app/const/all_colors.dart';
 
-class Custombuttom extends StatelessWidget {
+class CustomOnboardButton extends StatelessWidget {
   final String btmText;
   final VoidCallback onTab;
 
-  const Custombuttom({
+  const CustomOnboardButton({
     super.key,
     required this.btmText,
     required this.onTab,
@@ -18,17 +18,21 @@ class Custombuttom extends StatelessWidget {
       onTap: onTab,
       child: Container(
         width: double.infinity,
-        height: 50,
+        height: 40,
         decoration: BoxDecoration(
             color: AppColors.buttomBG,
             //     color: Colors.red,
-            borderRadius: BorderRadius.circular(10)),
+            borderRadius: BorderRadius.circular(5)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
               btmText,
               style: const TextStyle(color: Colors.white),
+            ),
+            const Icon(
+              Icons.person_3_outlined,
+              color: Colors.white,
             ),
             const SizedBox(height: 15),
           ],

@@ -21,7 +21,7 @@ class Custombuttom extends StatelessWidget {
         height: 50,
         decoration: BoxDecoration(
             color: AppColors.buttomBG,
-            //     color: Colors.red,
+          
             borderRadius: BorderRadius.circular(10)),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
